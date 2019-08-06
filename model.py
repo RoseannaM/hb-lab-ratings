@@ -23,9 +23,32 @@ class User(db.Model):
     age = db.Column(db.Integer, nullable=True)
     zipcode = db.Column(db.String(15), nullable=True)
 
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+        return f"<User user_id={self.user_id} email={self.email}>"
+        
 
 # Put your Movie and Rating model classes here.
 
+class Movie(db.Model):
+    """Movie of ratings website."""
+
+    __tablename__ = "movie"
+
+    movie_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    title = db.Column(db.Text, nullable=True)
+    released_at = db.Column(db.DateTime, nullable=True)
+    imbd_url = db.Column(db.Text, nullable=True)
+
+class Rating(db.Model):
+    """Rating for movies of ratings website."""
+
+    __tablename__ = "rating"
+
+    rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    movie_id = db.Column(db.Integer, nullable=True)
+    user_id = db.Column(db.Integer, nullable=True)
+    score = db.Column(db.Integer, nullable=True)
 
 ##############################################################################
 # Helper functions
