@@ -2,8 +2,6 @@
 
 from sqlalchemy import func
 from datetime import datetime
-import re
-
 from model import User
 from model import Rating
 from model import Movie
