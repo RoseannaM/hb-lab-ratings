@@ -69,7 +69,7 @@ def load_ratings():
      # Read u.movie and insert data
     for row in open("seed_data/u.data"):
         row = row.rstrip()
-        movie_id, user_id, score, blah = row.split()
+        user_id, movie_id, score, blah = row.split("\t")
 
         rating = Rating(
                     user_id=user_id,

@@ -3,12 +3,28 @@
 <head>
   <title>Ratings</title>
 </head>
-
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 <body>
-  Ratings
+  <div>
+  <a href="/">Home</a>
+  {% if session["id"] is defined %}
+  <a href="/logout">Logout</a>
+  {% else %}
+  <a href="/register">Register</a>
+  <a href="/login">Login</a>
+  {% endif %}
+  </div>
   <hr>
-
-  {% block content %} put your content here {% endblock %}
+   
+  {% block content %}  {% endblock %}
 
 </body>
 </html>
